@@ -24,14 +24,18 @@ storeDailyWage () {
 	wagePerDay[((i))]=$(($workHr*$empRatePerHr));
 	totalSalary=$((${wagePerDay[i]}+$totalSalary));
 	(( i++ ));
+	wageDayNum[((i))]=$i;
 	echo $totalSalary;
 }
 
 showWageDetails () {
 	for (( i=0; i<20; i++ ))
 	do
-		echo "Day " $i " Wage is : " ${wagePerDay[i]};
+		echo "Day " ${wageDayNum[i]} " Wage is : " ${wagePerDay[i]};
 	done
+	echo "Showing Day Number and Wages stored in Arrays :"
+	echo ${wageDayNum[@]};
+	echo ${wagePerDay[@]};
 	echo "Total Salary is : "$totalSalary;
 }
 
